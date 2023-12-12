@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AnimeList</string>
+    <string name="tab_3">Episodes</string>
+    <string name="tab_1_description">Overview of the general info of the anime</string>
+    <string name="tab_2_description">A list of characters present in the anime</string>
+    <string name="tab_3_description">A list of the episodes of the anime</string>
+    <string name="average_rating">Avg. rating</string>
+    <string name="start_date">Start Date</string>
+    <string name="description">Description</string>
+    <string name="anime_cover_description">Cover of the anime</string>
+</resources>

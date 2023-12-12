@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/pageSearch"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_search_32"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/pageHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_32"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/pageMylist"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_32"
+        android:title="@string/mylist"/>
+</menu>
