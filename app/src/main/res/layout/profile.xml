@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:text="@string/username"
-                android:textColor="@color/black"
+                android:textColor="@color/slate_800"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -274,7 +274,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/status_distribution"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/slate_800"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

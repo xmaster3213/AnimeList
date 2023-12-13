@@ -44,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/status"
-                        android:textColor="@color/black"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/score"
-                        android:textColor="@color/black"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/zero"
-                            android:textColor="@color/black"
+                            android:textColor="@color/slate_800"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/ten"
-                            android:textColor="@color/black"
+                            android:textColor="@color/slate_800"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/episode_progress"
-                        android:textColor="@color/black"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/zero"
-                            android:textColor="@color/black"
+                            android:textColor="@color/slate_800"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +162,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/ten"
-                            android:textColor="@color/black"
+                            android:textColor="@color/slate_800"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/start_date"
-                        android:textColor="@color/black"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -214,7 +214,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/finish_date"
-                        android:textColor="@color/black"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

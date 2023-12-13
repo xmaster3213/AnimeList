@@ -101,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/year"
-                        android:textColor="#000000"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -128,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/season"
-                        android:textColor="#000000"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/format"
-                        android:textColor="#000000"
+                        android:textColor="@color/slate_800"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

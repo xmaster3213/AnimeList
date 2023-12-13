@@ -75,7 +75,7 @@
                             android:ellipsize="end"
                             android:gravity="top"
                             android:maxLines="1"
-                            android:textColor="@color/black"
+                            android:textColor="@color/slate_800"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
