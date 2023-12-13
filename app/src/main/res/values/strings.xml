@@ -71,4 +71,13 @@
     <string name="media_popularity">Popularity</string>
     <string name="media_popularity_desc">Popularity Descending</string>
     <string name="episode_abbreviation">ep.</string>
+    <string name="total_anime">Total Anime</string>
+    <string name="episodes_watched">Episodes Watched</string>
+    <string name="value">Value</string>
+    <string name="days_watched">Days Watched</string>
+    <string name="mean_score">Mean Score</string>
+    <string name="standard_deviation">Standard Deviation</string>
+    <string name="count">Count</string>
+    <string name="hours_watched">Hours Watched</string>
+    <string name="status_distribution">Status Distribution</string>
 </resources>

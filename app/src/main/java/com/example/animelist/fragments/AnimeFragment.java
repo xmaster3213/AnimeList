@@ -32,6 +32,8 @@ import com.squareup.picasso.Picasso;
 
 public class AnimeFragment extends Fragment {
 
+    @Nullable
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.anime, container, false);
     }

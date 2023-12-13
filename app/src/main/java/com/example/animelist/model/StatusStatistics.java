@@ -4,32 +4,48 @@ import com.example.animelist.model.enums.MediaListStatus;
 
 public class StatusStatistics {
 
-    private int count;
-    private float meanScore;
-    private int minutesWatched;
+    private Integer count;
+    private Float meanScore;
+    private Integer minutesWatched;
     private MediaListStatus status;
 
-    public int getCount() {
+    public Float getHoursWatched() {
+        if (minutesWatched == null) {
+            return null;
+        } else {
+            return (float) minutesWatched / 60;
+        }
+    }
+
+    public Float getDaysWatched() {
+        if (minutesWatched == null) {
+            return null;
+        } else {
+            return (float) getHoursWatched() / 24;
+        }
+    }
+
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public float getMeanScore() {
+    public Float getMeanScore() {
         return meanScore;
     }
 
-    public void setMeanScore(float meanScore) {
+    public void setMeanScore(Float meanScore) {
         this.meanScore = meanScore;
     }
 
-    public int getMinutesWatched() {
+    public Integer getMinutesWatched() {
         return minutesWatched;
     }
 
-    public void setMinutesWatched(int minutesWatched) {
+    public void setMinutesWatched(Integer minutesWatched) {
         this.minutesWatched = minutesWatched;
     }
 

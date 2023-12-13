@@ -8,5 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#F1F1F1</color>
+    <color name="slate_800">#1e293b</color>
     <color name="semitransparent">#80000000</color>
+    <color name="semitransparent_white">#50FFFFFF</color>
+    <color name="orange">#FA9A25</color>
+    <color name="purple">#BC41FA</color>
+    <color name="light_blue">#1CB5FF</color>
+    <color name="green">#79FA19</color>
 </resources>

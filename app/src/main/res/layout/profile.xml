@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/userBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/purple_200"
+                android:contentDescription="@string/anime_banner_description"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="0dp"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:background="@color/purple_500"
+                android:layout_width="110dp"
+                android:layout_height="131dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/anime_cover_description"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/username"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userImage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_background"
+                android:padding="10dp">
+
+                <!-- First statistic -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/totalAnimeDrawable"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_ondemand_video_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/totalAnimeValue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/totalAnimeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/total_anime"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@+id/totalAnimeDrawable"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/totalAnimeValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/value"
+                        android:textColor="@color/purple_500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/totalAnimeTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/totalAnimeTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Second statistic -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/episodesWatchedDrawable"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/baseline_play_circle_outline_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/episodesWatchedValue"
+                        app:layout_constraintEnd_toStartOf="@+id/episodesWatchedTitle"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/episodesWatchedTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/episodes_watched"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/episodesWatchedValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/value"
+                        android:textColor="@color/purple_500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/episodesWatchedDrawable"
+                        app:layout_constraintTop_toBottomOf="@+id/episodesWatchedTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- First statistic -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+                    <ImageView
+                        android:id="@+id/daysWatchedDrawable"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_access_time_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/daysWatchedValue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/daysWatchedTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/days_watched"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@+id/daysWatchedDrawable"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/daysWatchedValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/value"
+                        android:textColor="@color/purple_500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/daysWatchedTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/daysWatchedTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Second statistic -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+                    <ImageView
+                        android:id="@+id/meanScoreDrawable"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/baseline_percent_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/meanScoreValue"
+                        app:layout_constraintEnd_toStartOf="@+id/meanScoreTitle"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/meanScoreTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mean_score"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/meanScoreValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/value"
+                        android:textColor="@color/purple_500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/meanScoreDrawable"
+                        app:layout_constraintTop_toBottomOf="@+id/meanScoreTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- First statistic -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <ImageView
+                        android:id="@+id/standardDeviationDrawable"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/baseline_division_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/standardDeviationValue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/standardDeviationTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/standard_deviation"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@+id/standardDeviationDrawable"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/standardDeviationValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/value"
+                        android:textColor="@color/purple_500"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/standardDeviationTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/standardDeviationTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_background">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/status_distribution"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chartStatus"
+                    android:layout_width="120dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/chartStatus"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
+                        android:id="@+id/legendContainer1"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:background="@drawable/rounded_background"
+                        android:backgroundTint="@color/orange">
+
+                        <TextView
+                            android:id="@+id/legendStatus1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/slate_800"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="@string/status"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:paddingHorizontal="10dp"
+                            android:backgroundTint="@color/semitransparent_white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/legendValue1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/slate_800"
+                                android:text="@string/value" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
+                        android:id="@+id/legendContainer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_background"
+                        android:backgroundTint="@color/light_blue">
+
+                        <TextView
+                            android:id="@+id/legendStatus2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/slate_800"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="@string/status"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:paddingHorizontal="10dp"
+                            android:backgroundTint="@color/semitransparent_white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/legendValue2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/slate_800"
+                                android:text="@string/value" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
+                        android:id="@+id/legendContainer3"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_background"
+                        android:backgroundTint="@color/purple">
+
+                        <TextView
+                            android:id="@+id/legendStatus3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/slate_800"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="@string/status"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:paddingHorizontal="10dp"
+                            android:backgroundTint="@color/semitransparent_white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/legendValue3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/slate_800"
+                                android:text="@string/value" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
+                        android:id="@+id/legendContainer4"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_background"
+                        android:backgroundTint="@color/green">
+
+                        <TextView
+                            android:id="@+id/legendStatus4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/slate_800"
+                            android:layout_marginHorizontal="10dp"
+                            android:text="@string/status"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:paddingHorizontal="10dp"
+                            android:backgroundTint="@color/semitransparent_white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/legendValue4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/slate_800"
+                                android:text="@string/value" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

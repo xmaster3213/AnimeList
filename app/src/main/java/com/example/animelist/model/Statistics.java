@@ -1,14 +1,17 @@
 package com.example.animelist.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Statistics {
 
-    private UserStatistics anime;
+    @SerializedName("anime")
+    private UserStatistics animeStatistics;
 
-    public UserStatistics getAnime() {
-        return anime;
+    public UserStatistics getAnimeStatistics() {
+        return animeStatistics;
     }
 
-    public void setAnime(UserStatistics anime) {
-        this.anime = anime;
+    public void setAnimeStatistics(UserStatistics animeStatistics) {
+        this.animeStatistics = animeStatistics;
     }
 }

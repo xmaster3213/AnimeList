@@ -48,6 +48,8 @@ public class addToListFragment extends Fragment {
         changedEntry = new AnimeListEntry();
     }
 
+    @Nullable
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.add_to_list_layout, container, false);
     }

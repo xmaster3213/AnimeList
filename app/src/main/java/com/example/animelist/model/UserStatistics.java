@@ -1,68 +1,90 @@
 package com.example.animelist.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class UserStatistics {
 
-    private int count;
-    private float meanScore;
-    private float standardDeviation;
-    private int minutesWatched;
-    private int episodesWatched;
-    private StatusStatistics status;
-    private StartYearStatistics startYear;
+    private Integer count;
+    private Float meanScore;
+    private Float standardDeviation;
+    private Integer minutesWatched;
+    private Integer episodesWatched;
+    @SerializedName("statuses")
+    private List<StatusStatistics> statusStatistics;
+    @SerializedName("startYears")
+    private List<StartYearStatistics> startYearStatistics;
 
-    public int getCount() {
+    public Float getHoursWatched() {
+        if (minutesWatched == null) {
+            return null;
+        } else {
+            return (float) minutesWatched / 60;
+        }
+    }
+
+    public Float getDaysWatched() {
+        if (minutesWatched == null) {
+            return null;
+        } else {
+            return (float) getHoursWatched() / 24;
+        }
+    }
+
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public float getMeanScore() {
+    public Float getMeanScore() {
         return meanScore;
     }
 
-    public void setMeanScore(float meanScore) {
+    public void setMeanScore(Float meanScore) {
         this.meanScore = meanScore;
     }
 
-    public float getStandardDeviation() {
+    public Float getStandardDeviation() {
         return standardDeviation;
     }
 
-    public void setStandardDeviation(float standardDeviation) {
+    public void setStandardDeviation(Float standardDeviation) {
         this.standardDeviation = standardDeviation;
     }
 
-    public int getMinutesWatched() {
+    public Integer getMinutesWatched() {
         return minutesWatched;
     }
 
-    public void setMinutesWatched(int minutesWatched) {
+    public void setMinutesWatched(Integer minutesWatched) {
         this.minutesWatched = minutesWatched;
     }
 
-    public int getEpisodesWatched() {
+    public Integer getEpisodesWatched() {
         return episodesWatched;
     }
 
-    public void setEpisodesWatched(int episodesWatched) {
+    public void setEpisodesWatched(Integer episodesWatched) {
         this.episodesWatched = episodesWatched;
     }
 
-    public StatusStatistics getStatus() {
-        return status;
+    public List<StatusStatistics> getStatusStatistics() {
+        return statusStatistics;
     }
 
-    public void setStatus(StatusStatistics status) {
-        this.status = status;
+    public void setStatusStatistics(List<StatusStatistics> statusStatistics) {
+        this.statusStatistics = statusStatistics;
     }
 
-    public StartYearStatistics getStartYear() {
-        return startYear;
+    public List<StartYearStatistics> getStartYearStatistics() {
+        return startYearStatistics;
     }
 
-    public void setStartYear(StartYearStatistics startYear) {
-        this.startYear = startYear;
+    public void setStartYearStatistics(List<StartYearStatistics> startYearStatistics) {
+        this.startYearStatistics = startYearStatistics;
     }
 }
