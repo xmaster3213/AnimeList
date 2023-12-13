@@ -24,6 +24,7 @@
         <activity android:name=".activity.MyListActivity" />
         <activity android:name=".activity.DiscoverActivity" />
         <activity android:name=".activity.AnimeActivity" />
+        <activity android:name=".activity.CharacterActivity" />
     </application>
 
 </manifest>

@@ -80,4 +80,9 @@
     <string name="count">Count</string>
     <string name="hours_watched">Hours Watched</string>
     <string name="status_distribution">Status Distribution</string>
+    <string name="character_name">Character Name</string>
+    <string name="gender">Gender:</string>
+    <string name="age">Age:</string>
+    <string name="unknown">Unknown</string>
+    <string name="no_description">No description</string>
 </resources>

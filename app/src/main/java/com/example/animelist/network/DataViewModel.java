@@ -3,7 +3,6 @@ package com.example.animelist.network;
 import android.util.Log;
 import android.util.Pair;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -12,17 +11,15 @@ import com.example.animelist.model.AnimeListEntry;
 import com.example.animelist.model.BodyAnime;
 import com.example.animelist.model.BodyAnimeList;
 import com.example.animelist.model.BodyAnimeListCollection;
+import com.example.animelist.model.BodyCharacter;
 import com.example.animelist.model.BodyUpdateAnimeListEntry;
 import com.example.animelist.model.BodyUser;
-import com.example.animelist.model.Date;
 import com.example.animelist.model.enums.Format;
 import com.example.animelist.model.enums.MediaListSort;
-import com.example.animelist.model.enums.MediaListStatus;
 import com.example.animelist.model.enums.Season;
 import com.example.animelist.utilities.ApiServiceSingleton;
 import com.example.animelist.utilities.Utilities;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -38,18 +35,43 @@ public class DataViewModel extends ViewModel {
     private MutableLiveData<BodyAnimeList> animesPopularThisSeason = new MutableLiveData<>();
     private MutableLiveData<BodyAnimeList> animesJustAdded = new MutableLiveData<>();
     private MutableLiveData<BodyAnimeList> animesAllTimePopular = new MutableLiveData<>();
-    private MutableLiveData<BodyAnimeList> animesUpcomingNextSeaon = new MutableLiveData<>();
+    private MutableLiveData<BodyAnimeList> animesUpcomingNextSesaon = new MutableLiveData<>();
     private MutableLiveData<BodyAnimeList> animesFilter = new MutableLiveData<>();
     private MutableLiveData<BodyAnime> anime = new MutableLiveData<>();
     private MutableLiveData<BodyUpdateAnimeListEntry> updatedAnimeListEntry = new MutableLiveData<>();
     private MutableLiveData<BodyAnimeListCollection> animeListCollection = new MutableLiveData<>();
     private MutableLiveData<BodyUser> userInfo = new MutableLiveData<>();
+    private MutableLiveData<BodyCharacter> character = new MutableLiveData<>();
 
+    public MutableLiveData<BodyAnimeList> getAnimesPopularThisSeasonLiveData() {
+        return animesPopularThisSeason;
+    }
+    public MutableLiveData<BodyAnimeList> getAnimesJustAddedLiveData() {
+        return animesJustAdded;
+    }
+    public MutableLiveData<BodyAnimeList> getAnimesAllTimePopularLiveData() {
+        return animesAllTimePopular;
+    }
+    public MutableLiveData<BodyAnimeList> getAnimesUpcomingNextSeasonLiveData() {
+        return animesUpcomingNextSesaon;
+    }
     public MutableLiveData<BodyAnimeList> getAnimesFilter() {
         return animesFilter;
     }
+    public MutableLiveData<BodyAnime> getAnimesLiveData() {
+        return anime;
+    }
+    public MutableLiveData<BodyUpdateAnimeListEntry> getUpdatedAnimeListEntryLiveData() {
+        return updatedAnimeListEntry;
+    }
     public MutableLiveData<BodyAnimeListCollection> getanimeListCollection() {
         return animeListCollection;
+    }
+    public MutableLiveData<BodyUser> getUserInfoLiveData() {
+        return userInfo;
+    }
+    public MutableLiveData<BodyCharacter> getCharacterLiveData() {
+        return character;
     }
 
     public LiveData<BodyAnimeList> getAnimesPopularThisSeason() {
@@ -71,7 +93,7 @@ public class DataViewModel extends ViewModel {
 //                        "  \"perPage\": 50,\n" +
 //                        "  \"sortOrder\": [\"POPULARITY_DESC\"]\n" +
 //                        "}";
-        return makeRequestAnimeList(Queries.ANIME_LIST_QUERY, variables, animesPopularThisSeason);
+        return makeRequestAnimeList(Queries.ANIME_LIST, variables, animesPopularThisSeason);
     }
 
     public LiveData<BodyAnimeList> getAnimesJustAdded() {
@@ -93,7 +115,7 @@ public class DataViewModel extends ViewModel {
 //                        "  \"perPage\": 50,\n" +
 //                        "  \"sortOrder\": [\"START_DATE_DESC\"]\n" +
 //                        "}";
-        return makeRequestAnimeList(Queries.ANIME_LIST_QUERY, variables, animesJustAdded);
+        return makeRequestAnimeList(Queries.ANIME_LIST, variables, animesJustAdded);
     }
 
     public LiveData<BodyAnimeList> getAnimesAllTimePopular() {
@@ -109,10 +131,10 @@ public class DataViewModel extends ViewModel {
 //                        "  \"perPage\": 50,\n" +
 //                        "  \"sortOrder\": [\"POPULARITY_DESC\"]\n" +
 //                        "}";
-        return makeRequestAnimeList(Queries.ANIME_LIST_QUERY, variables, animesAllTimePopular);
+        return makeRequestAnimeList(Queries.ANIME_LIST, variables, animesAllTimePopular);
     }
 
-    public LiveData<BodyAnimeList> getAnimesUpcomingNextSeaon() {
+    public LiveData<BodyAnimeList> getAnimesUpcomingNextSesaon() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH);
         Season season = Utilities.getSeasonGivenMonth(((Calendar.getInstance().get(Calendar.MONTH) - 1 + 3) % 12) + 1);
@@ -136,7 +158,7 @@ public class DataViewModel extends ViewModel {
 //                        "  \"perPage\": 50,\n" +
 //                        "  \"sortOrder\": [\"POPULARITY_DESC\"]\n" +
 //                        "}";
-        return makeRequestAnimeList(Queries.ANIME_LIST_QUERY, variables, animesUpcomingNextSeaon);
+        return makeRequestAnimeList(Queries.ANIME_LIST, variables, animesUpcomingNextSesaon);
     }
 
 
@@ -162,14 +184,21 @@ public class DataViewModel extends ViewModel {
             list.add(new Pair<>("search", search));
         }
         String variables = createVariables(list);
-        return makeRequestAnimeList(Queries.ANIME_LIST_QUERY, variables, animesFilter);
+        return makeRequestAnimeList(Queries.ANIME_LIST, variables, animesFilter);
     }
 
     public LiveData<BodyAnime> getAnime(int id) {
         List<Pair<String, String>> list = new ArrayList<>();
         list.add(new Pair<>("id", Integer.toString(id)));
         String variables = createVariables(list);
-        return makeRequestAnime(Queries.ANIME_QUERY, variables, anime);
+        return makeRequestAnime(Queries.ANIME, variables, anime);
+    }
+
+    public LiveData<BodyCharacter> getCharacter(int id) {
+        List<Pair<String, String>> list = new ArrayList<>();
+        list.add(new Pair<>("id", Integer.toString(id)));
+        String variables = createVariables(list);
+        return makeRequestCharacter(Queries.CHARACTER, variables, character);
     }
 
     public LiveData<BodyUpdateAnimeListEntry> updateAnimeEntry(AnimeListEntry animeListEntry) {
@@ -213,7 +242,7 @@ public class DataViewModel extends ViewModel {
 
     public LiveData<BodyUser> getUserInfo() {
         String variables = "{}";
-        return makeRequestUser(Queries.USER_QUERY, variables, userInfo);
+        return makeRequestUser(Queries.USER, variables, userInfo);
     }
 
     private String createVariables(List<Pair<String, String>> elements) {
@@ -273,6 +302,26 @@ public class DataViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<BodyAnime> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+        return mutableLiveData;
+    }
+
+    private LiveData<BodyCharacter> makeRequestCharacter(String query, String variables, MutableLiveData<BodyCharacter> mutableLiveData) {
+        RequestMethod requestMethod = createRequestMethod(query, variables);
+        ApiServiceSingleton.getInstance().getCharacter(requestMethod).enqueue(new Callback<BodyCharacter>() {
+            @Override
+            public void onResponse(Call<BodyCharacter> call, Response<BodyCharacter> response) {
+                if (response.isSuccessful()) {
+                    mutableLiveData.setValue(response.body());
+                    Log.e("idk", "Response successful: ");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyCharacter> call, Throwable t) {
                 t.printStackTrace();
             }
         });

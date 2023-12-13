@@ -29,6 +29,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder implements View
         characterImage = itemView.findViewById(R.id.characterImage);
         characterName = itemView.findViewById(R.id.characterName);
         characterRole = itemView.findViewById(R.id.characterRole);
+        itemView.setOnClickListener(this);
     }
 
     public void bindData(Edges characterEdge, Context context) {

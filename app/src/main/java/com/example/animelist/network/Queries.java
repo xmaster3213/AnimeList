@@ -2,7 +2,7 @@ package com.example.animelist.network;
 
 public final class Queries {
 
-    public final static String ANIME_LIST_QUERY = "query ($season: MediaSeason, $year: Int, $format: MediaFormat, $excludeFormat: MediaFormat, $status: MediaStatus, $minEpisodes: Int, $page: Int, $perPage:Int, $sort: [MediaSort], $search:String) {\n" +
+    public final static String ANIME_LIST = "query ($season: MediaSeason, $year: Int, $format: MediaFormat, $excludeFormat: MediaFormat, $status: MediaStatus, $minEpisodes: Int, $page: Int, $perPage:Int, $sort: [MediaSort], $search:String) {\n" +
             "  Page(page: $page, perPage: $perPage) {\n" +
             "    pageInfo {\n" +
             "      total\n" +
@@ -48,7 +48,7 @@ public final class Queries {
             "  }\n" +
             "}\n";
 
-    public final static String ANIME_QUERY = "query ($id: Int, $type: MediaType) {\n" +
+    public final static String ANIME = "query ($id: Int, $type: MediaType) {\n" +
             "  Media(id: $id, type: $type) {\n" +
             "    id\n" +
             "    title {\n" +
@@ -134,7 +134,7 @@ public final class Queries {
             "  \n" +
             "}\n";
 
-    public static final String USER_QUERY = "query {\n" +
+    public static final String USER = "query {\n" +
                 "  Viewer {\n" +
                 "    id\n" +
                 "    name\n" +
@@ -223,4 +223,18 @@ public final class Queries {
             "    }\n" +
             "  }\n" +
             "}";
+    public static final String CHARACTER = "query character($id: Int) {\n" +
+            "  Character(id: $id) {\n" +
+            "    id\n" +
+            "    name {\n" +
+            "      full\n" +
+            "    }\n" +
+            "    image {\n" +
+            "      large\n" +
+            "    }\n" +
+            "    description\n" +
+            "    gender\n" +
+            "    age\n" +
+            "  }\n" +
+            "}\n";
 }

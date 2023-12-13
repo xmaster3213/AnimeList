@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/homeLayout"
-    android:background="@color/gray">
+    style="@style/Theme.Animelist.Background">
 
     <ScrollView
         android:layout_width="match_parent"

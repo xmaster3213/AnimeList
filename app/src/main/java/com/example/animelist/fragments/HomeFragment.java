@@ -29,69 +29,77 @@ public class HomeFragment extends Fragment {
     CardAnimeBaseAdapter adapterUpcoming;
     private static final String LOG = "Home-Fragment";
 
+    DataViewModel dataViewModel;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        dataViewModel = new ViewModelProvider(this).get(DataViewModel.class);
         return inflater.inflate(R.layout.home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FragmentActivity activity = getActivity();
-        if (activity != null) {
-            adapterPopularSeason = new CardAnimeBaseAdapter();
-            adapterAdded = new CardAnimeBaseAdapter();
-            adapterPopularAllTime = new CardAnimeBaseAdapter();
-            adapterUpcoming = new CardAnimeBaseAdapter();
-            RecyclerView recyclerView = activity.findViewById(R.id.recyclerViewAnimePopularThisSeason);
-            recyclerView.setAdapter(adapterPopularSeason);
-            recyclerView = activity.findViewById(R.id.recyclerViewJustAdded);
-            recyclerView.setAdapter(adapterAdded);
-            recyclerView = activity.findViewById(R.id.recyclerViewAllTimePopular);
-            recyclerView.setAdapter(adapterPopularAllTime);
-            recyclerView = activity.findViewById(R.id.recyclerViewUpcomingNextSeason);
-            recyclerView.setAdapter(adapterUpcoming);
-            DataViewModel dataViewModel = new ViewModelProvider(activity).get(DataViewModel.class);
-            dataViewModel.getAnimesPopularThisSeason().observe(activity, new Observer<BodyAnimeList>() {
-                @Override
-                public void onChanged(BodyAnimeList bodyAnimeList) {
-                    if (bodyAnimeList != null) {
-                        adapterPopularSeason.setData(bodyAnimeList.getData().getPage().getAnimes());
-                        Log.e("idk", "getAnimesPopularThisSeason: ");
+
+            FragmentActivity activity = getActivity();
+            if (activity != null) {
+                adapterPopularSeason = new CardAnimeBaseAdapter();
+                adapterAdded = new CardAnimeBaseAdapter();
+                adapterPopularAllTime = new CardAnimeBaseAdapter();
+                adapterUpcoming = new CardAnimeBaseAdapter();
+                RecyclerView recyclerView = view.findViewById(R.id.recyclerViewAnimePopularThisSeason);
+                recyclerView.setAdapter(adapterPopularSeason);
+                recyclerView = view.findViewById(R.id.recyclerViewJustAdded);
+                recyclerView.setAdapter(adapterAdded);
+                recyclerView = view.findViewById(R.id.recyclerViewAllTimePopular);
+                recyclerView.setAdapter(adapterPopularAllTime);
+                recyclerView = view.findViewById(R.id.recyclerViewUpcomingNextSeason);
+                recyclerView.setAdapter(adapterUpcoming);
+                dataViewModel.getAnimesPopularThisSeason().observe(getViewLifecycleOwner(), new Observer<BodyAnimeList>() {
+                    @Override
+                    public void onChanged(BodyAnimeList bodyAnimeList) {
+                        if (bodyAnimeList != null) {
+                            adapterPopularSeason.setData(bodyAnimeList.getData().getPage().getAnimes());
+                            Log.e("idk", "getAnimesPopularThisSeason: ");
+                        }
+                        dataViewModel.getAnimesPopularThisSeasonLiveData().removeObserver(this);
                     }
-                }
-            });
-            dataViewModel.getAnimesJustAdded().observe(activity, new Observer<BodyAnimeList>() {
-                @Override
-                public void onChanged(BodyAnimeList bodyAnimeList) {
-                    if (bodyAnimeList != null) {
-                        adapterAdded.setData(bodyAnimeList.getData().getPage().getAnimes());
-                        Log.e("idk", "getAnimesJustAdded: ");
+                });
+                dataViewModel.getAnimesJustAdded().observe(getViewLifecycleOwner(), new Observer<BodyAnimeList>() {
+                    @Override
+                    public void onChanged(BodyAnimeList bodyAnimeList) {
+                        if (bodyAnimeList != null) {
+                            adapterAdded.setData(bodyAnimeList.getData().getPage().getAnimes());
+                            Log.e("idk", "getAnimesJustAdded: ");
+                        }
+                        dataViewModel.getAnimesJustAddedLiveData().removeObserver(this);
                     }
-                }
-            });
-            dataViewModel.getAnimesAllTimePopular().observe(activity, new Observer<BodyAnimeList>() {
-                @Override
-                public void onChanged(BodyAnimeList bodyAnimeList) {
-                    if (bodyAnimeList != null) {
-                        adapterPopularAllTime.setData(bodyAnimeList.getData().getPage().getAnimes());
-                        Log.e("idk", "getAnimesAllTimePopular: ");
+                });
+                dataViewModel.getAnimesAllTimePopular().observe(getViewLifecycleOwner(), new Observer<BodyAnimeList>() {
+                    @Override
+                    public void onChanged(BodyAnimeList bodyAnimeList) {
+                        if (bodyAnimeList != null) {
+                            adapterPopularAllTime.setData(bodyAnimeList.getData().getPage().getAnimes());
+                            Log.e("idk", "getAnimesAllTimePopular: ");
+                        }
+                        dataViewModel.getAnimesAllTimePopularLiveData().removeObserver(this);
                     }
-                }
-            });
-            dataViewModel.getAnimesUpcomingNextSeaon().observe(activity, new Observer<BodyAnimeList>() {
-                @Override
-                public void onChanged(BodyAnimeList bodyAnimeList) {
-                    if (bodyAnimeList != null) {
-                        adapterUpcoming.setData(bodyAnimeList.getData().getPage().getAnimes());
-                        Log.e("idk", "getAnimesUpcomingNextSeaon: ");
+                });
+                dataViewModel.getAnimesUpcomingNextSesaon().observe(getViewLifecycleOwner(), new Observer<BodyAnimeList>() {
+                    @Override
+                    public void onChanged(BodyAnimeList bodyAnimeList) {
+                        if (bodyAnimeList != null) {
+                            adapterUpcoming.setData(bodyAnimeList.getData().getPage().getAnimes());
+                            Log.e("idk", "getAnimesUpcomingNextSeaon: ");
+                        }
+                        dataViewModel.getAnimesUpcomingNextSeasonLiveData().removeObserver(this);
                     }
-                }
-            });
-        } else {
-            Log.e(LOG, "Activity is null");
-        }
+                });
+            } else {
+                Log.e(LOG, "Activity is null");
+            }
+
     }
 
 }

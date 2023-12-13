@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/gray">
+    style="@style/Theme.Animelist.Background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:text="@string/username"
-                android:textColor="@color/slate_800"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +62,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_background"
+                style="@style/Theme.Animelist.Card"
                 android:padding="10dp">
 
                 <!-- First statistic -->
@@ -98,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
-                        android:textColor="@color/purple_500"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@+id/totalAnimeTitle"
                         app:layout_constraintTop_toBottomOf="@+id/totalAnimeTitle" />
@@ -137,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:text="@string/value"
-                        android:textColor="@color/purple_500"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/episodesWatchedDrawable"
                         app:layout_constraintTop_toBottomOf="@+id/episodesWatchedTitle" />
@@ -176,7 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
-                        android:textColor="@color/purple_500"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@+id/daysWatchedTitle"
                         app:layout_constraintTop_toBottomOf="@+id/daysWatchedTitle" />
@@ -215,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:text="@string/value"
-                        android:textColor="@color/purple_500"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/meanScoreDrawable"
                         app:layout_constraintTop_toBottomOf="@+id/meanScoreTitle" />
@@ -253,7 +252,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
-                        android:textColor="@color/purple_500"
+                        android:textColor="?android:colorPrimary"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@+id/standardDeviationTitle"
                         app:layout_constraintTop_toBottomOf="@+id/standardDeviationTitle" />
@@ -264,7 +263,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_background">
+                style="@style/Theme.Animelist.Card">
 
                 <TextView
                     android:id="@+id/header"
@@ -274,7 +273,6 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/status_distribution"
                     android:textSize="20sp"
-                    android:textColor="@color/slate_800"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -304,14 +302,13 @@
                         android:id="@+id/legendContainer1"
                         android:layout_width="match_parent"
                         android:layout_height="28dp"
-                        android:background="@drawable/rounded_background"
+                        style="@style/Theme.Animelist.Card"
                         android:backgroundTint="@color/orange">
 
                         <TextView
                             android:id="@+id/legendStatus1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/slate_800"
                             android:layout_marginHorizontal="10dp"
                             android:text="@string/status"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -322,7 +319,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:background="@drawable/rounded_background"
+                            style="@style/Theme.Animelist.Card"
                             android:paddingHorizontal="10dp"
                             android:backgroundTint="@color/semitransparent_white"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -334,7 +331,6 @@
                                 android:id="@+id/legendValue1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/slate_800"
                                 android:text="@string/value" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -345,14 +341,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="28dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/rounded_background"
+                        style="@style/Theme.Animelist.Card"
                         android:backgroundTint="@color/light_blue">
 
                         <TextView
                             android:id="@+id/legendStatus2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/slate_800"
                             android:layout_marginHorizontal="10dp"
                             android:text="@string/status"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -363,7 +358,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:background="@drawable/rounded_background"
+                            style="@style/Theme.Animelist.Card"
                             android:paddingHorizontal="10dp"
                             android:backgroundTint="@color/semitransparent_white"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -375,7 +370,6 @@
                                 android:id="@+id/legendValue2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/slate_800"
                                 android:text="@string/value" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -386,14 +380,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="28dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/rounded_background"
+                        style="@style/Theme.Animelist.Card"
                         android:backgroundTint="@color/purple">
 
                         <TextView
                             android:id="@+id/legendStatus3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/slate_800"
                             android:layout_marginHorizontal="10dp"
                             android:text="@string/status"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -404,7 +397,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:background="@drawable/rounded_background"
+                            style="@style/Theme.Animelist.Card"
                             android:paddingHorizontal="10dp"
                             android:backgroundTint="@color/semitransparent_white"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -416,7 +409,6 @@
                                 android:id="@+id/legendValue3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/slate_800"
                                 android:text="@string/value" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -427,14 +419,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="28dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/rounded_background"
+                        style="@style/Theme.Animelist.Card"
                         android:backgroundTint="@color/green">
 
                         <TextView
                             android:id="@+id/legendStatus4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/slate_800"
                             android:layout_marginHorizontal="10dp"
                             android:text="@string/status"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -445,7 +436,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:background="@drawable/rounded_background"
+                            style="@style/Theme.Animelist.Card"
                             android:paddingHorizontal="10dp"
                             android:backgroundTint="@color/semitransparent_white"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -457,7 +448,6 @@
                                 android:id="@+id/legendValue4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/slate_800"
                                 android:text="@string/value" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -465,6 +455,7 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         </LinearLayout>

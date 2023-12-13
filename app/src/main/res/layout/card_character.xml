@@ -3,7 +3,7 @@
     android:layout_height="62dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:background="@drawable/rounded_background"
+    style="@style/Theme.Animelist.Card"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
@@ -20,7 +20,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/slate_800"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/characterName"/>

@@ -4,6 +4,7 @@ package com.example.animelist.network;
 import com.example.animelist.model.BodyAnime;
 import com.example.animelist.model.BodyAnimeList;
 import com.example.animelist.model.BodyAnimeListCollection;
+import com.example.animelist.model.BodyCharacter;
 import com.example.animelist.model.BodyUpdateAnimeListEntry;
 import com.example.animelist.model.BodyUser;
 
@@ -22,5 +23,7 @@ public interface ApiService {
     Call<BodyUpdateAnimeListEntry> updateAnimeListEntry(@retrofit2.http.Body RequestMethod requestMethod);
     @POST("/")
     Call<BodyAnimeListCollection> getAnimeListCollection(@retrofit2.http.Body RequestMethod requestMethod);
+    @POST("/")
+    Call<BodyCharacter> getCharacter(@retrofit2.http.Body RequestMethod requestMethod);
 
 }

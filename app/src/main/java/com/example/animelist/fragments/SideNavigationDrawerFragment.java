@@ -38,10 +38,14 @@ import com.squareup.picasso.Picasso;
 public class SideNavigationDrawerFragment extends Fragment {
 
     DrawerLayout drawerLayout;
+    DataViewModel dataViewModel;
+    SharedViewModel sharedViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        dataViewModel = new ViewModelProvider(this).get(DataViewModel.class);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         return inflater.inflate(R.layout.side_navigation_drawer, container, false);
     }
 
@@ -50,8 +54,8 @@ public class SideNavigationDrawerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
-            drawerLayout = activity.findViewById(R.id.drawerLayout);
-            MaterialToolbar topAppBar = activity.findViewById(R.id.topAppBar);
+            drawerLayout = view.findViewById(R.id.drawerLayout);
+            MaterialToolbar topAppBar = view.findViewById(R.id.topAppBar);
             activity.setSupportActionBar(topAppBar);
 //            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
 //                    activity,
@@ -68,6 +72,7 @@ public class SideNavigationDrawerFragment extends Fragment {
 //            Navigation activities
             if (currentClass.equals("HomeActivity") || currentClass.equals("DiscoverActivity") || currentClass.equals("MyListActivity")) {
                 NavigationView navigationView = activity.findViewById(R.id.navigationView);
+
                 navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -86,6 +91,8 @@ public class SideNavigationDrawerFragment extends Fragment {
                 });
 //            Move to Activity Profile if Profile button pressed.
                 View headerView = navigationView.getHeaderView(0);
+                TextView textView = headerView.findViewById(R.id.sideHeaderNavigationDrawerUserName);
+                ImageView imageView = headerView.findViewById(R.id.sideHeaderNavigationDrawerUserImage);
                 headerView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -101,18 +108,19 @@ public class SideNavigationDrawerFragment extends Fragment {
                     }
                 });
 
-                DataViewModel dataViewModel = new ViewModelProvider(activity).get(DataViewModel.class);
-                dataViewModel.getUserInfo().observe(activity, new Observer<BodyUser>() {
+                dataViewModel.getUserInfo().observe(getViewLifecycleOwner(), new Observer<BodyUser>() {
                     @Override
                     public void onChanged(BodyUser bodyUser) {
-                        SharedViewModel sharedViewModel = new ViewModelProvider(activity).get(SharedViewModel.class);
-                        sharedViewModel.setViewer(bodyUser.getData().getViewer());
-                        TextView textView = activity.findViewById(R.id.sideHeaderNavigationDrawerUserName);
-                        String username = bodyUser.getData().getViewer().getName();
-                        textView.setText(username);
-                        ImageView imageView = activity.findViewById(R.id.sideHeaderNavigationDrawerUserImage);
-                        String imageUrl = bodyUser.getData().getViewer().getAvatar().getLarge();
-                        Picasso.get().load(imageUrl).into(imageView);
+                        if (bodyUser != null) {
+
+                            sharedViewModel.setViewer(bodyUser.getData().getViewer());
+                            Log.e("TAG", "onChanged: " + bodyUser.getData().getViewer().getName());
+                            String username = bodyUser.getData().getViewer().getName();
+                            textView.setText(username);
+                            String imageUrl = bodyUser.getData().getViewer().getAvatar().getLarge();
+                            Picasso.get().load(imageUrl).into(imageView);
+                        }
+                        dataViewModel.getUserInfoLiveData().removeObserver(this);
                     }
                 });
             } else {

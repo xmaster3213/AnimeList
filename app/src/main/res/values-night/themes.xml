@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Theme.Animelist" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -12,5 +13,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.Animelist.Background">
+        <item name="android:background">@color/dark_blue</item>
+    </style>
+    <style name="Theme.Animelist.Card" parent="Theme.Animelist">
+        <item name="android:backgroundTint">@color/light_black</item>
+        <item name="android:background">@drawable/rounded_background</item>
+    </style>
+    <style name="Theme.Animelist.Textbox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/light_black</item>
     </style>
 </resources>
