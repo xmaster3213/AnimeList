@@ -110,16 +110,27 @@ public class addToListFragment extends Fragment {
                 changedEntry.setScore((int) value);
             });
 //            setting up episode progress
-            TextView episodeMaxVal = activity.findViewById(R.id.episodeMaxVal);
-            episodeMaxVal.setText(Integer.toString(anime.getEpisodes()));
-            Slider episodeSlider = activity.findViewById(R.id.sliderEpisode);
-            episodeSlider.setValueTo(anime.getEpisodes());
-            if (animeListEntry != null && animeListEntry.getProgress() != null) {
-                episodeSlider.setValue(animeListEntry.getProgress());
+            if (anime.getEpisodes() != null) {
+                TextView episodeMaxVal = activity.findViewById(R.id.episodeMaxVal);
+                episodeMaxVal.setText(Integer.toString(anime.getEpisodes()));
+                Slider episodeSlider = activity.findViewById(R.id.sliderEpisode);
+                episodeSlider.setValueTo(anime.getEpisodes());
+                if (animeListEntry != null && animeListEntry.getProgress() != null) {
+                    episodeSlider.setValue(animeListEntry.getProgress());
+                }
+                episodeSlider.addOnChangeListener(((slider, value, fromUser) -> {
+                    changedEntry.setProgress((int) value);
+                }));
+            } else {
+                Slider episodeSlider = activity.findViewById(R.id.sliderEpisode);
+                episodeSlider.setVisibility(View.GONE);
+                TextView episodeMaxVal = activity.findViewById(R.id.episodeMaxVal);
+                episodeMaxVal.setVisibility(View.GONE);
+                TextView episodeMinVal = activity.findViewById(R.id.episodeMinVal);
+                episodeMinVal.setVisibility(View.GONE);
+                TextView episodeProgressTitle = activity.findViewById(R.id.episodeProgressTitle);
+                episodeProgressTitle.setVisibility(View.GONE);
             }
-            episodeSlider.addOnChangeListener(((slider, value, fromUser) -> {
-                changedEntry.setProgress((int) value);
-            }));
 //            setting up start date
             TextInputLayout startDate = activity.findViewById(R.id.startDateInputLayout);
             if (animeListEntry != null && animeListEntry.getStartedAt() != null && animeListEntry.getStartedAt().getYear() != null) {

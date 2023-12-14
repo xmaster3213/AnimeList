@@ -46,11 +46,16 @@ public class AnimeEntryViewHolder extends RecyclerView.ViewHolder {
         animeTitle.setText(animeEntry.getAnime().getTitle().getRomaji());
         String title = context.getString(R.string.score) + ": " + animeEntry.getScore().toString();
         animeScore.setText(title);
+        Log.e("TAG", "bindData: " + animeEntry.getAnime().getId());
+        Integer episodes = 0;
+        if (animeEntry.getAnime().getEpisodes() != null) {
+            episodes = animeEntry.getAnime().getEpisodes();
+        }
         String progress = animeEntry.getProgress().toString() + "/" +
-                animeEntry.getAnime().getEpisodes().toString() + " " +
+                episodes.toString() + " " +
                 context.getString(R.string.episode_abbreviation);
         animeProgress.setText(progress);
-        animeProgressIndicator.setMax(animeEntry.getAnime().getEpisodes());
+        animeProgressIndicator.setMax(episodes);
         animeProgressIndicator.setProgressCompat(animeEntry.getProgress(), false);
         String imageUrl = animeEntry.getAnime().getCoverImage().getLarge();
         Picasso.get().load(imageUrl).into(animeImage);
