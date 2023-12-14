@@ -85,7 +85,6 @@ public class DiscoverFilterFragment extends Fragment {
     private <T> void setupFilterMenu(List<T> list, int autoCompleteTextViewId, AppCompatActivity activity) {
         ArrayAdapter<T> adapter = new ArrayAdapter<>(requireContext(),
                 R.layout.filter_item_list, list);
-        Log.e("TAG", "onViewCreated: " + list);
         AutoCompleteTextView textView = activity.findViewById(autoCompleteTextViewId);
         textView.setText(activity.getResources().getString(R.string.any), false);
         textView.setAdapter(adapter);

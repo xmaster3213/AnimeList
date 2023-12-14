@@ -38,7 +38,6 @@ public class AnimeTabOverviewFragment extends Fragment {
                 @Override
                 public void onChanged(Anime anime) {
                     TextView textView = activity.findViewById(R.id.avgRating);
-                    Log.e("TAG", "onViewCreated: " + textView);
                     textView.setText(Integer.toString(anime.getAverageScore()));
                     textView = activity.findViewById(R.id.format);
                     textView.setText(anime.getFormat().toString()

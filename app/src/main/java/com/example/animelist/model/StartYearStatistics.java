@@ -3,7 +3,7 @@ package com.example.animelist.model;
 public class StartYearStatistics {
 
     private int count;
-    private int meanScore;
+    private float meanScore;
     private int minutesWatched;
     private Integer startYear;
 
@@ -15,11 +15,11 @@ public class StartYearStatistics {
         this.count = count;
     }
 
-    public int getMeanScore() {
+    public float getMeanScore() {
         return meanScore;
     }
 
-    public void setMeanScore(int meanScore) {
+    public void setMeanScore(float meanScore) {
         this.meanScore = meanScore;
     }
 

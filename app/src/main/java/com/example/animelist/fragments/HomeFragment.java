@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.animelist.R;
 import com.example.animelist.RecyclerView.CardAnimeBaseAdapter;
 import com.example.animelist.model.BodyAnimeList;
 import com.example.animelist.network.DataViewModel;
+import com.example.animelist.utilities.NetworkUtilities;
 
 public class HomeFragment extends Fragment {
 
@@ -61,7 +63,6 @@ public class HomeFragment extends Fragment {
                     public void onChanged(BodyAnimeList bodyAnimeList) {
                         if (bodyAnimeList != null) {
                             adapterPopularSeason.setData(bodyAnimeList.getData().getPage().getAnimes());
-                            Log.e("idk", "getAnimesPopularThisSeason: ");
                         }
                         dataViewModel.getAnimesPopularThisSeasonLiveData().removeObserver(this);
                     }
@@ -71,7 +72,6 @@ public class HomeFragment extends Fragment {
                     public void onChanged(BodyAnimeList bodyAnimeList) {
                         if (bodyAnimeList != null) {
                             adapterAdded.setData(bodyAnimeList.getData().getPage().getAnimes());
-                            Log.e("idk", "getAnimesJustAdded: ");
                         }
                         dataViewModel.getAnimesJustAddedLiveData().removeObserver(this);
                     }
@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
                     public void onChanged(BodyAnimeList bodyAnimeList) {
                         if (bodyAnimeList != null) {
                             adapterPopularAllTime.setData(bodyAnimeList.getData().getPage().getAnimes());
-                            Log.e("idk", "getAnimesAllTimePopular: ");
                         }
                         dataViewModel.getAnimesAllTimePopularLiveData().removeObserver(this);
                     }
@@ -91,7 +90,6 @@ public class HomeFragment extends Fragment {
                     public void onChanged(BodyAnimeList bodyAnimeList) {
                         if (bodyAnimeList != null) {
                             adapterUpcoming.setData(bodyAnimeList.getData().getPage().getAnimes());
-                            Log.e("idk", "getAnimesUpcomingNextSeaon: ");
                         }
                         dataViewModel.getAnimesUpcomingNextSeasonLiveData().removeObserver(this);
                     }

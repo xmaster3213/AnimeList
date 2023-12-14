@@ -184,13 +184,11 @@ public class addToListFragment extends Fragment {
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e("TAG", "onClick: Save button clicked");
                     DataViewModel dataViewModel = new ViewModelProvider(activity).get(DataViewModel.class);
                     dataViewModel.updateAnimeEntry(changedEntry).observe(getViewLifecycleOwner(),
                             new Observer<BodyUpdateAnimeListEntry>() {
                         @Override
                         public void onChanged(BodyUpdateAnimeListEntry bodyUpdateAnimeListEntry) {
-                            Log.e("TAG", "onChanged: onChanged received");
                             SharedViewModel sharedViewModel = new ViewModelProvider(activity)
                                     .get(SharedViewModel.class);
                             anime.setAnimeListEntry(bodyUpdateAnimeListEntry
@@ -209,7 +207,6 @@ public class addToListFragment extends Fragment {
                                      AppCompatActivity activity, String defaultValue) {
         ArrayAdapter<T> adapter = new ArrayAdapter<>(requireContext(),
                 R.layout.filter_item_list, list);
-        Log.e("TAG", "onViewCreated: " + list);
         AutoCompleteTextView textView = activity.findViewById(autoCompleteTextViewId);
         textView.setText(defaultValue, false);
         textView.setAdapter(adapter);

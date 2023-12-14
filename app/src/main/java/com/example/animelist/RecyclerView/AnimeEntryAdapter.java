@@ -44,6 +44,5 @@ public class AnimeEntryAdapter extends RecyclerView.Adapter<AnimeEntryViewHolder
     public void setData(List<AnimeListEntry> list) {
         this.animeList = new ArrayList<>(list);
         notifyDataSetChanged();
-        Log.e("idk", "Data set: ");
     }
 }

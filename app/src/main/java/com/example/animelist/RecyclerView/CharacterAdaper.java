@@ -44,6 +44,5 @@ public class CharacterAdaper extends RecyclerView.Adapter<CharacterViewHolder> {
     public void setData(List<Edges> list) {
         this.characterEdgeList = new ArrayList<>(list);
         notifyDataSetChanged();
-        Log.e("idk", "Data set: ");
     }
 }

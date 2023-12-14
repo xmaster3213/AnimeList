@@ -3,6 +3,7 @@ package com.example.animelist.network;
 import android.util.Log;
 import android.util.Pair;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -18,6 +19,7 @@ import com.example.animelist.model.enums.Format;
 import com.example.animelist.model.enums.MediaListSort;
 import com.example.animelist.model.enums.Season;
 import com.example.animelist.utilities.ApiServiceSingleton;
+import com.example.animelist.utilities.NetworkUtilities;
 import com.example.animelist.utilities.Utilities;
 
 import java.util.ArrayList;
@@ -221,8 +223,9 @@ public class DataViewModel extends ViewModel {
         if (animeListEntry.getStatus() != null) {
             list.add(new Pair<>("status", animeListEntry.getStatus().toString()));
         }
-        list.add(new Pair<>("animeId", animeListEntry.getMediaId().toString()));
+        list.add(new Pair<>("mediaId", animeListEntry.getMediaId().toString()));
         String variables = createVariables(list);
+        Log.e("TAG", "updateAnimeEntry: " + variables);
         return makeRequestUpdateAnimeListEntry(Queries.UPDATE_ANIME_LIST_ENTRY, variables,
                 updatedAnimeListEntry);
     }
@@ -252,7 +255,7 @@ public class DataViewModel extends ViewModel {
         List<String> list = new ArrayList<>();
         for (Pair<String, String> element: elements) {
             if (element.second != null && element.first != null) {
-                if (element.first.equals("sort")) {
+                if (element.first.equals("sort") || element.first.equals("startedAt") || element.first.equals("completedAt")) {
                     list.add("\"" + element.first + "\": " + element.second);
                 } else {
                     list.add("\"" + element.first + "\": \"" + element.second + "\"");
@@ -276,7 +279,6 @@ public class DataViewModel extends ViewModel {
             public void onResponse(Call<BodyAnimeList> call, Response<BodyAnimeList> response) {
                 if (response.isSuccessful()) {
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 
@@ -296,7 +298,6 @@ public class DataViewModel extends ViewModel {
             public void onResponse(Call<BodyAnime> call, Response<BodyAnime> response) {
                 if (response.isSuccessful()) {
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 
@@ -316,7 +317,6 @@ public class DataViewModel extends ViewModel {
             public void onResponse(Call<BodyCharacter> call, Response<BodyCharacter> response) {
                 if (response.isSuccessful()) {
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 
@@ -333,19 +333,18 @@ public class DataViewModel extends ViewModel {
             String query, String variables, MutableLiveData<BodyUpdateAnimeListEntry> mutableLiveData
     ) {
         RequestMethod requestMethod = createRequestMethod(query, variables);
-        Log.e("TAG", "makeRequestUpdateAnimeListEntry: " + variables);
         ApiServiceSingleton.getInstance().updateAnimeListEntry(requestMethod).enqueue(new Callback<BodyUpdateAnimeListEntry>() {
+
             @Override
             public void onResponse(Call<BodyUpdateAnimeListEntry> call, Response<BodyUpdateAnimeListEntry> response) {
                 if (response.isSuccessful()) {
+                    Log.e("TAG", "updateAnimeEntry: " + response);
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 
             @Override
             public void onFailure(Call<BodyUpdateAnimeListEntry> call, Throwable t) {
-                Log.e("idk", "Response failure");
                 t.printStackTrace();
             }
         });
@@ -362,7 +361,6 @@ public class DataViewModel extends ViewModel {
             public void onResponse(Call<BodyAnimeListCollection> call, Response<BodyAnimeListCollection> response) {
                 if (response.isSuccessful()) {
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 
@@ -382,7 +380,6 @@ public class DataViewModel extends ViewModel {
             public void onResponse(Call<BodyUser> call, Response<BodyUser> response) {
                 if (response.isSuccessful()) {
                     mutableLiveData.setValue(response.body());
-                    Log.e("idk", "Response successful: ");
                 }
             }
 

@@ -76,7 +76,6 @@ public class AnimeEntryViewHolder extends RecyclerView.ViewHolder {
                         addToListFragment.class.getSimpleName(), true);
             }
         });
-        Log.e("idk", "Data binded: ");
     }
 
     private void sendAnimeIntent(View v) {

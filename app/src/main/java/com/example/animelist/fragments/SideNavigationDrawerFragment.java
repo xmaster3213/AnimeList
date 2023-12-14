@@ -68,7 +68,6 @@ public class SideNavigationDrawerFragment extends Fragment {
 //            actionBarDrawerToggle.syncState();
 
             String currentClass = activity.getClass().getSimpleName();
-            Log.e("TAG", "onViewCreated: " + currentClass);
 //            Navigation activities
             if (currentClass.equals("HomeActivity") || currentClass.equals("DiscoverActivity") || currentClass.equals("MyListActivity")) {
                 NavigationView navigationView = activity.findViewById(R.id.navigationView);
@@ -115,7 +114,6 @@ public class SideNavigationDrawerFragment extends Fragment {
                         if (bodyUser != null) {
 
                             sharedViewModel.setViewer(bodyUser.getData().getViewer());
-                            Log.e("TAG", "onChanged: " + bodyUser.getData().getViewer().getName());
                             String username = bodyUser.getData().getViewer().getName();
                             textView.setText(username);
                             String imageUrl = bodyUser.getData().getViewer().getAvatar().getLarge();

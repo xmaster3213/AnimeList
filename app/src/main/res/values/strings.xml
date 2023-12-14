@@ -86,4 +86,7 @@
     <string name="unknown">Unknown</string>
     <string name="no_description">No description</string>
     <string name="watch_for_year">Watched for Year</string>
+    <string name="please_connect_to_the_internet">Please connect to the Internet.</string>
+    <string name="you_are_offline">You\'re offline, check your connection.</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -34,7 +34,6 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder implements View
 
     public void bindData(Edges characterEdge, Context context) {
         currentCharacterEdge = characterEdge;
-        Log.e("TAG", "bindData: " + characterEdge);
         String name;
         if (currentCharacterEdge.getName() == null) {
             name = currentCharacterEdge.getCharacter().getName().getFull();
@@ -45,7 +44,6 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder implements View
         characterRole.setText(currentCharacterEdge.getRole().toString(context.getResources()));
         String imageUrl = characterEdge.getCharacter().getImage().getLarge();
         Picasso.get().load(imageUrl).into(characterImage);
-        Log.e("idk", "Data binded: ");
     }
 
     @Override

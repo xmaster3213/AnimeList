@@ -49,7 +49,7 @@ public class Utilities {
             case 11:
                 return Season.FALL;
             default:
-                Log.e("error", "Utilies.getSeasonGivenMonth(): invalid month number");
+                Log.e("Animelist", "Utilies.getSeasonGivenMonth(): invalid month number");
                 return null;
         }
     }

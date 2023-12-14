@@ -33,12 +33,10 @@ public class CardAnimeBaseViewHolder extends RecyclerView.ViewHolder implements 
         animeTitle.setText(anime.getTitle().getRomaji());
         String imageUrl = anime.getCoverImage().getLarge();
         Picasso.get().load(imageUrl).into(animeImage);
-        Log.e("idk", "Data binded: ");
     }
 
     @Override
     public void onClick(View v) {
-        Log.e("TAG", "onClick: Anime selected");
         if (currentAnime != null) {
             Intent intent = new Intent(v.getContext(), AnimeActivity.class);
             intent.putExtra("animeId", currentAnime.getId());

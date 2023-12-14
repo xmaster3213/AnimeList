@@ -42,6 +42,5 @@ public class EpisodeAdaper extends RecyclerView.Adapter<EpisodeViewHolder> {
     public void setData(List<Episode> list) {
         this.episodeList = new ArrayList<>(list);
         notifyDataSetChanged();
-        Log.e("idk", "Data set: ");
     }
 }

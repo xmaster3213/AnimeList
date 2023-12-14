@@ -40,6 +40,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -154,10 +155,12 @@ public class ProfileFragment extends Fragment {
                     List<PieEntry> entriesPie = new ArrayList<>();
                     float sum = 0;
                     for (StatusStatistics statusStatistics: userStatistics.getStatusStatistics()) {
-                        PieEntry pieEntry = new PieEntry(statusStatistics.getCount(),
-                                statusStatistics.getStatus().toString(activity.getResources()));
-                        entriesPie.add(pieEntry);
-                        sum += statusStatistics.getCount();
+                        if (statusStatistics.getStatus() != null) {
+                            PieEntry pieEntry = new PieEntry(statusStatistics.getCount(),
+                                    statusStatistics.getStatus().toString(activity.getResources()));
+                            entriesPie.add(pieEntry);
+                            sum += statusStatistics.getCount();
+                        }
                     }
 
                     for (int i = 0; i < entriesPie.size(); i++) {
@@ -188,15 +191,20 @@ public class ProfileFragment extends Fragment {
                     ArrayList<Entry> entriesLinear = new ArrayList<>();
 
                     for (StartYearStatistics startYearStatistics: userStatistics.getStartYearStatistics()) {
-                        Log.e("TAG", "onChanged: " + startYearStatistics.getStartYear() + " " + startYearStatistics.getCount());
                         if (startYearStatistics.getStartYear() != null) {
                             Entry linearEntry = new Entry(startYearStatistics.getStartYear(), startYearStatistics.getCount());
                             entriesLinear.add(linearEntry);
                         }
                     }
 
+                    Collections.sort(entriesLinear, new Comparator<Entry>() {
+                        @Override
+                        public int compare(Entry o1, Entry o2) {
+                            return (int) (o1.getX() - o2.getX());
+                        }
+                    });
+
                     LineDataSet setLinear;
-                    Log.e("TAG", "onChanged: " + entriesLinear.size());
 
                     // create a dataset and give it a type
                     setLinear = new LineDataSet(entriesLinear, "StartYear");

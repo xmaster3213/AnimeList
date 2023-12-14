@@ -34,6 +34,5 @@ public class AnimeEntryCollectionViewHolder extends RecyclerView.ViewHolder {
         currentCollection = collection;
         collectionTitle.setText(collection.getStatus().toString(context.getResources()));
         animeEntryAdapter.setData(collection.getEntries());
-        Log.e("idk", "Data binded: ");
     }
 }

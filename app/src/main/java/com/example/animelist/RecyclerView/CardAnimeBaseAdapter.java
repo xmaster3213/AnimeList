@@ -44,6 +44,5 @@ public class CardAnimeBaseAdapter extends RecyclerView.Adapter<CardAnimeBaseView
     public void setData(List<Anime> list) {
         this.animesList = new ArrayList<>(list);
         notifyDataSetChanged();
-        Log.e("idk", "Data set: ");
     }
 }

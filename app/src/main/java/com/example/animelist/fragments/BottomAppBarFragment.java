@@ -48,7 +48,6 @@ public class BottomAppBarFragment extends Fragment {
                                 break;
                             }
                             Intent intentHome = new Intent(getActivity(), HomeActivity.class);
-                            Log.e("idk", "Home activity called from app bar: ");
                             startActivity(intentHome);
                             break;
                         case R.id.pageMylist:

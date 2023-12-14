@@ -1,6 +1,7 @@
 package com.example.animelist.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ public class EpisodeViewHolder extends RecyclerView.ViewHolder implements View.O
         super(itemView);
         episodeImage = itemView.findViewById(R.id.episodeImage);
         episodeTitle = itemView.findViewById(R.id.episodeTitle);
+        itemView.setOnClickListener(this);
     }
 
     public void bindData(Episode episode) {
@@ -32,13 +34,19 @@ public class EpisodeViewHolder extends RecyclerView.ViewHolder implements View.O
         episodeTitle.setText(currentEpisode.getTitle());
         String imageUrl = currentEpisode.getThumbnail();
         Picasso.get().load(imageUrl).into(episodeImage);
-        Log.e("idk", "Data binded: ");
     }
 
     @Override
     public void onClick(View v) {
         if (currentEpisode != null) {
-//            TODO: Make intent to browser to open the currentEpisode.getUrl()
+            if (currentEpisode.getUrl() != null) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(currentEpisode.getUrl()));
+                if (intent.resolveActivity(v.getContext().getPackageManager()) != null) {
+                    v.getContext().startActivity(intent);
+                }
+
+            }
         }
     }
 }

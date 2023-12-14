@@ -44,9 +44,9 @@ public class Date {
 
     public String toJsonString() {
         return "{\n" +
-                "    \"year\": getYear(),\n" +
-                "    \"month\": getMonth(),\n" +
-                "    \"day\": getDay()\n" +
+                "    \"year\": " + getYear() + ",\n" +
+                "    \"month\": " + getMonth() + ",\n" +
+                "    \"day\": " + getDay() + "\n" +
                 "  }";
     }
 
@@ -55,7 +55,7 @@ public class Date {
         selectedDate.setTimeInMillis(time);
         this.setYear(selectedDate.get(Calendar.YEAR));
         this.setMonth(selectedDate.get(Calendar.MONTH));
-        this.setYear(selectedDate.get(Calendar.DAY_OF_MONTH));
+        this.setDay(selectedDate.get(Calendar.DAY_OF_MONTH));
     }
 
     public long getTimeInMillisecond() {

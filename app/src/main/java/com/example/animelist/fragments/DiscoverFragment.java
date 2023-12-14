@@ -163,7 +163,6 @@ public class DiscoverFragment extends Fragment {
                 .observe(activity, new Observer<BodyAnimeList>() {
                     @Override
                     public void onChanged(BodyAnimeList bodyAnimeList) {
-                        Log.e("TAG", "onChanged: changed");
                         contentAdapter.setData(bodyAnimeList.getData().getPage().getAnimes());
                         dataViewModel.getAnimesFilter().removeObserver(this);
                     }

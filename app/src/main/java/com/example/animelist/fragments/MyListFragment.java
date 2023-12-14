@@ -48,7 +48,6 @@ public class MyListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
-            Log.e("TAG", "getAnimeListCollection: " + userId);
             RecyclerView entryCollection = activity.findViewById(R.id.recyclerViewAnimeEntryCollection);
 
             AnimeEntryCollectionAdapter collectionAdapter = new AnimeEntryCollectionAdapter();
@@ -88,13 +87,11 @@ public class MyListFragment extends Fragment {
 
     private void getAnimeListCollection(DataViewModel dataViewModel, AppCompatActivity activity,
                                    AnimeEntryCollectionAdapter contentAdapter) {
-        Log.e("TAG", "getAnimeListCollection: " + userId);
         if (userId != null) {
             dataViewModel.getAnimeListCollection(userId, sort)
                     .observe(activity, new Observer<BodyAnimeListCollection>() {
                         @Override
                         public void onChanged(BodyAnimeListCollection bodyAnimeListCollection) {
-                            Log.e("TAG", "onChanged: changed");
                             animeListCollections = bodyAnimeListCollection
                                     .getDataAnimeListCollection().getMediaListCollection();
                             contentAdapter.setData(animeListCollections.getAnimeListCollection());

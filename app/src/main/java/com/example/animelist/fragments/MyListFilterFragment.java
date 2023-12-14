@@ -72,7 +72,6 @@ public class MyListFilterFragment extends Fragment {
                                      String defaultValue) {
         ArrayAdapter<T> adapter = new ArrayAdapter<>(requireContext(),
                 R.layout.filter_item_list, list);
-        Log.e("TAG", "onViewCreated: " + list);
         AutoCompleteTextView textView = activity.findViewById(autoCompleteTextViewId);
         textView.setText(defaultValue, false);
         textView.setAdapter(adapter);
