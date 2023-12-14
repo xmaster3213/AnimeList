@@ -151,7 +151,7 @@ public final class Queries {
                 "        standardDeviation\n" +
                 "        minutesWatched\n" +
                 "        episodesWatched\n" +
-                "        statuses {\n" +
+                "        statuses(sort: [COUNT_DESC]) {\n" +
                 "          count\n" +
                 "          meanScore\n" +
                 "          minutesWatched\n" +

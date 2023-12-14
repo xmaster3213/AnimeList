@@ -39,6 +39,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        closeNavigationOrDefault();
+    }
+
+    private void closeNavigationOrDefault() {
         Fragment drawerFragment = getSupportFragmentManager().findFragmentById(R.id.generalFragmentContainer);
         if (drawerFragment instanceof SideNavigationDrawerFragment) {
             if (((SideNavigationDrawerFragment) drawerFragment).isDrawerOpen()) {
@@ -50,4 +54,5 @@ public class HomeActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }

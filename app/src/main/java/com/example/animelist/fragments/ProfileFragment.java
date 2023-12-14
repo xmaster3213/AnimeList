@@ -1,7 +1,9 @@
 package com.example.animelist.fragments;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +20,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.animelist.R;
 import com.example.animelist.model.BodyUser;
+import com.example.animelist.model.StartYearStatistics;
 import com.example.animelist.model.StatusStatistics;
 import com.example.animelist.model.UserStatistics;
 import com.example.animelist.model.Viewer;
 import com.example.animelist.network.DataViewModel;
+import com.example.animelist.utilities.SimpleValueFormatter;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.squareup.picasso.Picasso;
 
@@ -73,6 +82,7 @@ public class ProfileFragment extends Fragment {
             legendContainer.add(activity.findViewById(R.id.legendContainer3));
             legendContainer.add(activity.findViewById(R.id.legendContainer4));
 
+//            Pie chart for status
             PieChart pieChart = activity.findViewById(R.id.chartStatus);
             pieChart.setUsePercentValues(true);
             pieChart.getDescription().setEnabled(false);
@@ -85,10 +95,40 @@ public class ProfileFragment extends Fragment {
             pieChart.setRotationEnabled(false);
             pieChart.setDrawEntryLabels(false);
 
+//            Linear chart for year
+            LineChart chartLinear = view.findViewById(R.id.chartYear);
+            Resources.Theme theme = activity.getTheme();
+            TypedValue typedValue = new TypedValue();
+            SimpleValueFormatter formatter = new SimpleValueFormatter();
+
+            chartLinear.setTouchEnabled(true);
+            chartLinear.setDrawGridBackground(true);
+
+            chartLinear.getDescription().setEnabled(false);
+            chartLinear.getLegend().setEnabled(false);
+            chartLinear.getAxisLeft().setEnabled(false);
+            chartLinear.getAxisRight().setEnabled(false);
+
+            chartLinear.getAxisLeft().setDrawGridLines(false);
+            chartLinear.getXAxis().setDrawGridLines(false);
+            chartLinear.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+            chartLinear.getXAxis().setValueFormatter(formatter);
+            theme.resolveAttribute(R.attr.graph_text_color, typedValue, true);
+            chartLinear.getXAxis().setTextColor(typedValue.data);
+            chartLinear.getXAxis().setGranularity(1f);
+
+            chartLinear.setHighlightPerDragEnabled(false);
+            chartLinear.setHighlightPerTapEnabled(false);
+
+            chartLinear.setDrawGridBackground(false);
+
+//            Add data
             DataViewModel dataViewModel = new ViewModelProvider(activity).get(DataViewModel.class);
             dataViewModel.getUserInfo().observe(activity, new Observer<BodyUser>() {
                 @Override
                 public void onChanged(BodyUser bodyUser) {
+
+//                    Update profile interface with user infos
                     Viewer viewer = bodyUser.getData().getViewer();
                     userName.setText(viewer.getName());
                     if (!(viewer.getAvatar().getLarge() == null || Objects.equals(viewer.getAvatar().getLarge(), ""))) {
@@ -110,22 +150,23 @@ public class ProfileFragment extends Fragment {
                     standardDeviation.setText(userStatistics.getStandardDeviation() != null ?
                             userStatistics.getStandardDeviation().toString() : "0");
 
-                    List<PieEntry> entries = new ArrayList<>();
+//                    Add data to pie chart
+                    List<PieEntry> entriesPie = new ArrayList<>();
                     float sum = 0;
                     for (StatusStatistics statusStatistics: userStatistics.getStatusStatistics()) {
                         PieEntry pieEntry = new PieEntry(statusStatistics.getCount(),
                                 statusStatistics.getStatus().toString(activity.getResources()));
-                        entries.add(pieEntry);
+                        entriesPie.add(pieEntry);
                         sum += statusStatistics.getCount();
                     }
 
-                    for (int i = 0; i < entries.size(); i++) {
-                        legendStatuses.get(i).setText(entries.get(i).getLabel());
-                        legendValues.get(i).setText(String.format("%.1f", entries.get(i).getValue() / sum * 100) + "%");
+                    for (int i = 0; i < entriesPie.size(); i++) {
+                        legendStatuses.get(i).setText(entriesPie.get(i).getLabel());
+                        legendValues.get(i).setText(String.format("%.1f", entriesPie.get(i).getValue() / sum * 100) + "%");
                         legendContainer.get(i).setVisibility(View.VISIBLE);
                     }
 
-                    PieDataSet set = new PieDataSet(entries, activity.getString(R.string.status_distribution));
+                    PieDataSet setPie = new PieDataSet(entriesPie, activity.getString(R.string.status_distribution));
 
                     ArrayList<Integer> colors = new ArrayList<>();
                     colors.add(activity.getColor(R.color.orange));
@@ -134,14 +175,70 @@ public class ProfileFragment extends Fragment {
                     colors.add(activity.getColor(R.color.green));
                     for (int c : ColorTemplate.PASTEL_COLORS)
                         colors.add(c);
-                    set.setColors(colors);
+                    setPie.setColors(colors);
 
-                    PieData data = new PieData(set);
-                    data.setDrawValues(false);
-                    data.setValueTextSize(20f);
+                    PieData dataPie = new PieData(setPie);
+                    dataPie.setDrawValues(false);
+                    dataPie.setValueTextSize(20f);
 
-                    pieChart.setData(data);
+                    pieChart.setData(dataPie);
                     pieChart.invalidate(); // refresh
+
+//                    Add data to linear chart
+                    ArrayList<Entry> entriesLinear = new ArrayList<>();
+
+                    for (StartYearStatistics startYearStatistics: userStatistics.getStartYearStatistics()) {
+                        Log.e("TAG", "onChanged: " + startYearStatistics.getStartYear() + " " + startYearStatistics.getCount());
+                        if (startYearStatistics.getStartYear() != null) {
+                            Entry linearEntry = new Entry(startYearStatistics.getStartYear(), startYearStatistics.getCount());
+                            entriesLinear.add(linearEntry);
+                        }
+                    }
+
+                    LineDataSet setLinear;
+                    Log.e("TAG", "onChanged: " + entriesLinear.size());
+
+                    // create a dataset and give it a type
+                    setLinear = new LineDataSet(entriesLinear, "StartYear");
+
+                    setLinear.setDrawIcons(false);
+
+                    // draw dashed line
+                    setLinear.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
+                    // color line and points
+                    theme.resolveAttribute(R.attr.accent_color, typedValue, true);
+                    setLinear.setColor(typedValue.data);
+                    theme.resolveAttribute(R.attr.graph_dot_color, typedValue, true);
+                    setLinear.setCircleColor(typedValue.data);
+
+                    setLinear.setLineWidth(4f);
+                    setLinear.setCircleRadius(6f);
+                    setLinear.setDrawCircleHole(false);
+
+                    setLinear.setDrawFilled(true);
+                    setLinear.setFillAlpha(255);
+                    theme.resolveAttribute(R.attr.fill_color, typedValue, true);
+                    setLinear.setFillColor(typedValue.data);
+
+                    theme.resolveAttribute(R.attr.graph_text_color, typedValue, true);
+                    setLinear.setValueTextColor(typedValue.data);
+                    setLinear.setValueFormatter(formatter);
+
+                    // text size of values
+                    setLinear.setValueTextSize(14f);
+
+
+                    // set the filled area
+                    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                    dataSets.add(setLinear); // add the data sets
+
+                    // create a data object with the data sets
+                    LineData dataLinear = new LineData(dataSets);
+
+                    // set data
+                    chartLinear.setData(dataLinear);
+                    chartLinear.invalidate();
 
                 }
             });

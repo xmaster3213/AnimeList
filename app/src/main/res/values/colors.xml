@@ -17,4 +17,10 @@
     <color name="green">#79FA19</color>
     <color name="dark_blue">#09121b</color>
     <color name="light_black">#1a1c1e</color>
+    <color name="text_color">#9FADBD</color>
+    <color name="graph_text_color">#CC9FADBD</color>
+    <color name="accent_color">#DA7B15</color>
+    <color name="graph_dot_color">#9cda7b15</color>
+    <color name="fill_color">#99DDE6EE</color>
+    <color name="fill_color_dark">#9932475A</color>
 </resources>

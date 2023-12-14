@@ -5,7 +5,7 @@ public class StartYearStatistics {
     private int count;
     private int meanScore;
     private int minutesWatched;
-    private int startYear;
+    private Integer startYear;
 
     public int getCount() {
         return count;
@@ -31,11 +31,11 @@ public class StartYearStatistics {
         this.minutesWatched = minutesWatched;
     }
 
-    public int getStartYear() {
+    public Integer getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(int startYear) {
+    public void setStartYear(Integer startYear) {
         this.startYear = startYear;
     }
 }
