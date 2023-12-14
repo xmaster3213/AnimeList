@@ -225,7 +225,6 @@ public class DataViewModel extends ViewModel {
         }
         list.add(new Pair<>("mediaId", animeListEntry.getMediaId().toString()));
         String variables = createVariables(list);
-        Log.e("TAG", "updateAnimeEntry: " + variables);
         return makeRequestUpdateAnimeListEntry(Queries.UPDATE_ANIME_LIST_ENTRY, variables,
                 updatedAnimeListEntry);
     }
@@ -338,7 +337,6 @@ public class DataViewModel extends ViewModel {
             @Override
             public void onResponse(Call<BodyUpdateAnimeListEntry> call, Response<BodyUpdateAnimeListEntry> response) {
                 if (response.isSuccessful()) {
-                    Log.e("TAG", "updateAnimeEntry: " + response);
                     mutableLiveData.setValue(response.body());
                 }
             }
