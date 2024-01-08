@@ -31,6 +31,7 @@ public class Utilities {
     }
 
     public static Season getSeasonGivenMonth(int month) {
+        month = month + 1;
         switch (month) {
             case 12:
             case 1:

@@ -24,6 +24,7 @@ import com.example.animelist.model.MediaListCollection;
 import com.example.animelist.model.Viewer;
 import com.example.animelist.model.enums.MediaListSort;
 import com.example.animelist.model.enums.MediaListStatus;
+import com.example.animelist.model.enums.Season;
 import com.example.animelist.network.DataViewModel;
 import com.example.animelist.utilities.SharedViewModel;
 
@@ -35,6 +36,7 @@ public class MyListFragment extends Fragment {
 
     private Integer userId = null;
     private MediaListSort sort = null;
+    private String status = "Any";
     private MediaListCollection animeListCollections;
 
     @Nullable
@@ -68,8 +70,8 @@ public class MyListFragment extends Fragment {
             textViewStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    String selectedValue = (String) adapterView.getItemAtPosition(position);
-                    showCollectionByStatus(activity, selectedValue, collectionAdapter);
+                    status = (String) adapterView.getItemAtPosition(position);
+                    showCollectionByStatus(activity, status, collectionAdapter);
                 }
             });
 //            sort filter
@@ -94,8 +96,9 @@ public class MyListFragment extends Fragment {
                         public void onChanged(BodyAnimeListCollection bodyAnimeListCollection) {
                             animeListCollections = bodyAnimeListCollection
                                     .getDataAnimeListCollection().getMediaListCollection();
-                            contentAdapter.setData(animeListCollections.getAnimeListCollection());
-                            dataViewModel.getanimeListCollection().removeObserver(this);
+                            showCollectionByStatus(activity, status, contentAdapter);
+//                            dataViewModel.getanimeListCollection().removeObserver(this);
+                            Log.e("TAG", "onChanged: ");
                         }
                     });
         }

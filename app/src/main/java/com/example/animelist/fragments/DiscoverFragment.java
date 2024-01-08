@@ -164,7 +164,6 @@ public class DiscoverFragment extends Fragment {
                     @Override
                     public void onChanged(BodyAnimeList bodyAnimeList) {
                         contentAdapter.setData(bodyAnimeList.getData().getPage().getAnimes());
-                        dataViewModel.getAnimesFilter().removeObserver(this);
                     }
                 });
     }

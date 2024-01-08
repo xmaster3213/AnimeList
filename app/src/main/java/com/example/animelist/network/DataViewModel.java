@@ -209,7 +209,7 @@ public class DataViewModel extends ViewModel {
             list.add(new Pair<>("id", animeListEntry.getId().toString()));
         }
         if (animeListEntry.getScore() != null) {
-            list.add(new Pair<>("score", animeListEntry.getScore().toString()));
+            list.add(new Pair<>("scoreRaw", Integer.toString(animeListEntry.getScore() * 10)));
         }
         if (animeListEntry.getProgress() != null) {
             list.add(new Pair<>("progress", animeListEntry.getProgress().toString()));

@@ -1,6 +1,7 @@
 package com.example.animelist.fragments;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -133,9 +134,11 @@ public class ProfileFragment extends Fragment {
                     Viewer viewer = bodyUser.getData().getViewer();
                     userName.setText(viewer.getName());
                     if (!(viewer.getAvatar().getLarge() == null || Objects.equals(viewer.getAvatar().getLarge(), ""))) {
+                        userImage.setBackgroundColor(Color.parseColor("#00000000"));
                         Picasso.get().load(viewer.getAvatar().getLarge()).into(userImage);
                     }
                     if (!(viewer.getBannerImage() == null || Objects.equals(viewer.getBannerImage(), ""))) {
+                        userBanner.setBackgroundColor(Color.parseColor("#00000000"));
                         Picasso.get().load(viewer.getBannerImage()).into(userBanner);
                     }
                     UserStatistics userStatistics = bodyUser.getData().getViewer()

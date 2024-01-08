@@ -93,7 +93,7 @@ public final class Queries {
             "      id\n" +
             "      mediaId\n" +
             "      status\n" +
-            "      score(format:POINT_100)\n" +
+            "      score(format: POINT_10)\n" +
             "      progress\n" +
             "      startedAt {\n" +
             "        year\n" +
