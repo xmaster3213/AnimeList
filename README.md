@@ -1,3 +1,5 @@
+This application is a school project and needed to be made in italian.
+
 # Animelist
 *Progetto di programmazione di Sistemi Mobile A.A. 2022/2023*
 
